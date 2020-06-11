@@ -1,5 +1,8 @@
 package com.jkl.test.userMod.controller;
 
+import com.jkl.test.userMod.service.UserService;
+import com.jkl.test.userMod.service.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -7,6 +10,14 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class UserController {
+
+    @Autowired
+    public UserService userService;
+
+    public void addUser(){
+        userService.addUser();
+    }
+
     public UserController() {
         System.out.println("userController");
     }
