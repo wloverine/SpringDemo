@@ -3,6 +3,8 @@ package com.jkl.test.userMod.service;
 import com.jkl.test.userMod.dao.UserDao;
 import com.jkl.test.userMod.dao.UserDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,8 +12,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired(required = false)
+
+    @Autowired
+    @Qualifier(value = "userMyBatisImpl")
     public UserDao userDao;
+
     public UserServiceImpl(){
         System.out.println("UserServiceImpl");
     }
