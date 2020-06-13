@@ -146,3 +146,42 @@
 
 ### AOP
 
+@Before,将方法标注为前置通知，作用于方法执行之前。
+
+```java
+@Before(value = "execution(* com.jkl.test.aop.*.*(..))")
+public void beforeMethod(JoinPoint jp){
+    Object[] args = jp.getArgs();
+    String name = jp.getSignature().getName();
+    System.out.println(MessageFormat.format("method is {0},arguments:{1}",name, Arrays.toString(args)));
+}
+```
+
+@After，将方法标注为后置通知，作用于finally方法。
+
+```java
+@After(value = "execution(* com.jkl.test.aop.*.*(..))")
+public void afterMethod(){
+    System.out.println("后置通知");
+}
+```
+
+@AfterReturning,将方法标注为返回通知，返回通知一般是在方法执行后，可以理解为try语句块中的最后一行return一句。
+
+注意方法中的返回值这个参数的名字需要和returning的变量名保持一致，这样在方法中才可以获取到返回值。如果被代理的方法本身没有返回值，则这边获得的返回值会为null。
+
+```java
+@AfterReturning(value = "execution(* com.jkl.test.aop.*.*(..))", returning = "result")
+public void returnMethod(Object result) {
+    System.out.println("The result is : " + result);
+}
+```
+
+@AfterThrowing,将方法标注为异常通知，作用于方法抛出异常的时候。
+
+```java
+@AfterThrowing(value = "execution(* com.jkl.test.aop.*.*(..))",throwing = "ex")
+public void exceptionMethod(Exception ex){
+    System.out.println(ex);
+}
+```
