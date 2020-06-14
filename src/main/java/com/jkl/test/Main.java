@@ -29,7 +29,7 @@ public class Main {
 //        int res = bean.plus(1, 3);
 //        System.out.println(res);
         MathI bean = cxl.getBean("mathImpl",MathI.class);
-        bean.div(1,0);
+        bean.div(1,12);
 
 
 

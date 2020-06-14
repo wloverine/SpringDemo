@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="emp" class="com.jkl.test.auto.Emp" autowire="byType">
+        <property name="id" value="1"/>
+        <property name="name" value="小明"/>
+
+    </bean>
+
+    <bean id="car" class="com.jkl.test.auto.Car">
+        <property name="cid" value="111"/>
+        <property name="cname" value="奥迪"/>
+    </bean>
+
+    <bean id="dept" class="com.jkl.test.auto.Dept">
+        <property name="did" value="222222"/>
+        <property name="dname" value="技术"/>
+    </bean>
+
+</beans>

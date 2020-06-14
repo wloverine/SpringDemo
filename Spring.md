@@ -185,3 +185,24 @@ public void exceptionMethod(Exception ex){
     System.out.println(ex);
 }
 ```
+
+@Around将方法标注为返回通知。
+
+```java
+@Around(value = "execution(* com.jkl.test.aop.*.*(..))")
+public Object aroud(ProceedingJoinPoint pjp){
+    Object res=null;
+    try {
+        System.out.println("前置");
+        res=pjp.proceed();
+        System.out.println("返回");
+        return res;
+    } catch (Throwable throwable) {
+        throwable.printStackTrace();
+        System.out.println("异常");
+    }finally {
+        System.out.println("后置");
+    }
+    return -1;
+}
+```

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+    <bean id="userService" class="com.jkl.test.service.UserService">
+        <property name="mailService" ref="mailService"/>
+    </bean>
+
+    <bean id="mailService" class="com.jkl.test.service.MailService"/>
+
+    <!--    <bean id="student" class="com.jkl.test.bean.Student">-->
+    <!--        <property name="id" value="1"/>-->
+    <!--        <property name="name" value="小红"/>-->
+    <!--    </bean>-->
+
+    <bean id="s2" class="com.jkl.test.bean.Student" p:id="2" p:name="小明" scope="singleton"/>
+
+    <context:property-placeholder location="db.properties"/>
+
+    <bean id="datasource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+</beans>
